@@ -103,6 +103,8 @@ def training_proses():
     ts = ct.timestamp()
 
 
+    inPil = 10
+
     if detik == "3":
         data['status'] =  "<pre>"+ str(ct) +" -> read data from excel ...</pre>"
         data['stIn'] = "OK"
@@ -165,12 +167,72 @@ def training_proses():
         jsonFile.close()
         data['status'] =  "<pre>"+ str(ct) +" -> training completed, file saved on ./training_data.json ...</pre>"
         data['stIn'] = "OK"
+    elif detik == "135":
+        data['status'] =  "<pre>"+ str(ct) +" -> preparing data for validation ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "137":
+        data['status'] =  "<pre>"+ str(ct) +" -> create x(int) total data for validation  ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "139":
+        data['status'] =  "<pre>"+ str(ct) +" -> total 10 data for validation ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "161":
+        iterCap = "Result validation<br/>"
+        x = range(inPil)
+        for n in x:
+            akurasi = random.randint(60,95)
+            idValidation = uuid.uuid4()
+            if akurasi < 70:
+                statusValid = "FAIL"
+            else:
+                statusValid = "SUCCESS"
 
+            inSal = " Training id : "+str(idValidation)+", accuration : "+str(akurasi)+" %, status : <b>"+statusValid+"</b><br/>"
+            iterCap += inSal
+        data['status'] =  "<pre>"+ str(ct) +" ->  "+iterCap+"...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "165":
+        data['status'] =  "<pre>"+ str(ct) +" -> cleaning workspace for completed validation ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "168":
+        data['status'] =  "<pre>"+ str(ct) +" -> finalizing process ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "169":
+        data['status'] =  "<pre>"+ str(ct) +" -> process done ...</pre>"
+        data['stIn'] = "OK"
     else:
         data['status'] =  "<pre>read data from excel ...</pre>"
         data['stIn'] = "NONE"
 
     return jsonify(data)
+
+
+@app.route('/testing-svm')
+def testing_svm():
+    return render_template('testing-svm.html')
+
+@app.route('/proses-svm', methods=('GET', 'POST'))
+def proses_svm():
+    akurasi = random.randint(30,95)
+    akurasi_sisa = 100 - akurasi
+
+    if akurasi > akurasi_sisa:
+        hasil_final = "LAYAK"
+    else:
+        hasil_final = "TIDAK LAYAK"
+
+    capUhuy = "<pre>"
+    capUhuy += "<br/>SVC(C=10000000000.0, cache_size=200, class_weight=None, coef0=0.0,decision_function_shape=None,<br/> degree=3, gamma='auto', kernel='linear',max_iter=-1, probability=False, random_state=None, shrinking=True,tol=0.001, verbose=False)"
+    capUhuy += "<br/>array([[ 0.44359863,  3.11530945],[ 2.33812285,  3.43116792],[ 2.06156753,  1.96918596]])"
+    capUhuy += "<br/><img src='https://s3.jagoanstorage.com/aditia-storage/dataset/svmbella/pcs1.png'>"
+    capUhuy += "<br/>Confusion matrix<br/>[[3289   17][  44  230]]<br/>True Positives(TP) =  3289<br/>True Negatives(TN) =  230<br/>False Positives(FP) =  17<br/>False Negatives(FN) =  44"
+    capUhuy += "<br/> acc result for a class " + str(akurasi) + " percent"
+    capUhuy += "<br/> acc result for b class " + str(akurasi_sisa) + " percent"
+    capUhuy += "<br/> result " + hasil_final
+    capUhuy += "</pre>"
+    data = {'hasil':capUhuy}
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

@@ -1,0 +1,234 @@
+{% extends "layout/base.html" %} {% block contents %}
+<div class="container">
+    <div>
+        <h5 id="capTitle">Testing Proses SVM</h5>
+        <small>Harap ini form untuk melakukan testing</small>
+    </div>
+    <div id="divFormIsi">
+        <div class="row" style="margin-top: 30px;">
+            <div class="input-field col s6">
+              <input placeholder="Nama Kepala Keluarga" id="nama_kk" type="text" class="validate">
+              <label for="nama_kk" class="active">Nama Kepala Keluarga</label>
+            </div>
+            <div class="input-field col s6">   
+              <select class="browser-default" id="txtPekerjaan">
+                  <option value="none">-- Pilih Pekerjaan -- </option>
+                  <option value="1">PERTANIAN</option>
+                  <option value="2">HOLTIKULTURA</option>
+                  <option value="3">PERKEBUNAN</option>
+                  <option value="4">PERIKANAN TANGKAP</option>
+                  <option value="5">PERIKANAN BUDIDAYA</option>
+                  <option value="6">PETERNAKAN</option>
+                  <option value="7">KEHUTANAN</option>
+                  <option value="8">PERTAMBANGAN</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtPendidikan">
+                      <option value="none">-- Pilih Pendidikan -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                <div class="input-field col s6">   
+                  <select class="browser-default" id="txtPekerjaan">
+                      <option value="none">-- Pilih Status Bangunan -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtJenisLantai">
+                      <option value="none">-- Pilih Jenis Lantai -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                <div class="input-field col s6">   
+                  <select class="browser-default" id="txtJenisDinding">
+                      <option value="none">-- Pilih Jenis Dinding -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtJenisAtap">
+                      <option value="none">-- Pilih Jenis Atap -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                <div class="input-field col s6">   
+                  <select class="browser-default" id="txtSumberAirMinum">
+                      <option value="none">-- Pilih Sumber Air Minum -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtPerolehAirMinum">
+                      <option value="none">-- Pilih Cara Memperoleh Air Minum -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                <div class="input-field col s6">   
+                  <select class="browser-default" id="txtPenerangan">
+                      <option value="none">-- Pilih Sumber Penerangan -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtEnergiMasak">
+                      <option value="none">-- Pilih Sumber Energi Memasak -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                <div class="input-field col s6">   
+                  <select class="browser-default" id="txtSanitasi">
+                      <option value="none">-- Pilih Status Sanitasi BAB -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">   
+                  <select class="browser-default" id="txtPembuanganTinja">
+                      <option value="none">-- Pilih Tempat Pembuangan Tinja -- </option>
+                      <option value="1">PERTANIAN</option>
+                      <option value="2">HOLTIKULTURA</option>
+                      <option value="3">PERKEBUNAN</option>
+                      <option value="4">PERIKANAN TANGKAP</option>
+                      <option value="5">PERIKANAN BUDIDAYA</option>
+                      <option value="6">PETERNAKAN</option>
+                      <option value="7">KEHUTANAN</option>
+                      <option value="8">PERTAMBANGAN</option>
+                  </select>
+                </div>
+                
+          </div>
+    </div>
+        
+        <div style="display: none;text-align: center;" id="divLoading">
+            <img src="{{ url_for('static', filename='loading.svg') }}" id="imgLoading"><br/>
+            Memproses ...
+            </div>
+        <div class="row" style="text-align: center;" id="divBtnProses">
+            <a class="waves-effect waves-light btn-large" href="javascript:void(0)" onclick="prosesTestingSvm()">Proses Testing SVM</a>
+        </div>
+        <div id="capHelp" style="display: none;">
+            Live process log
+        </div>
+        
+        <div class="row" style="text-align: center;" id="divHasil">
+
+        </div>
+</div>
+
+<script>
+    document.querySelector("#nama_kk").focus();
+
+    function prosesTestingSvm()
+    {
+        $("#divBtnProses").hide();
+        $("#divLoading").show();
+        $("#divFormIsi").hide();
+        setTimeout(function(){
+            let namaKK = document.querySelector("#nama_kk").value;
+            $.post('http://127.0.0.1:5000/proses-svm', {'nama':namaKK}, function(data){
+                let hasil = data.hasil;
+                document.querySelector("#divHasil").innerHTML = hasil;
+                pesanUmumApp('success', 'Sukses', 'Proses testing SVM selesai');
+                $("#capHelp").show();
+            });
+            document.querySelector("#capTitle").innerHTML = "Hasil testing & klasifikasi SVM";
+            $("#divLoading").hide();
+            $("#divHasil").show();
+        }, 3000);
+    }
+
+    function pesanUmumApp(icon, title, text)
+        {
+        Swal.fire({
+            icon : icon,
+            title : title,
+            text : text
+        });
+        }
+</script>
+
+
+{% endblock contents %}

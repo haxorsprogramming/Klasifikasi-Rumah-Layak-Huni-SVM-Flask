@@ -7,7 +7,7 @@
         <img src="{{ url_for('static', filename='training.png') }}" alt="" width="200">
       </div>
       
-      <h1 class="header center orange-text" id="capTitleTraining">Training Data</h1>
+      <h1 class="header center orange-text" id="capTitleTraining">Training & Validasi Data</h1>
       <div class="row center" id="divAwal">
         <h5 class="header col s12 light">Proses akan memakan waktu & resource CPU yang signifikan, untuk itu diharapkan tidak ada aplikasi/proses lain 
             yang mengganggu step training data
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="row center">
-        <a href="javascript:void(0)" id="btnTraining" onclick="prosesTraining()" class="btn-large waves-effect waves-light orange">Mulai training</a>
+        <a href="javascript:void(0)" id="btnTraining" onclick="prosesTraining()" class="btn-large waves-effect waves-light orange">Mulai training & validasi data</a>
       </div>
       <br><br>
 
@@ -53,16 +53,16 @@
                 cancelButtonText: "No",
             }).then((result) => {
                 $("#divLoading").show();
-              document.querySelector("#capTitleTraining").innerHTML = "Melakukan training data ...";
+              document.querySelector("#capTitleTraining").innerHTML = "Melakukan training & validasi data ...";
               $("#btnTraining").hide();
               $("#divAwal").hide();
               $("#divLog").show();
 
               setInterval(function(){
-                if(intStatus === 130){
+                if(intStatus === 170){
                     $("#divLoading").hide();
-                    pesanUmumApp('success', 'Sukses', "Proses training selesai ...");
-                    document.querySelector("#capTitleTraining").innerHTML = "Training data selesai ...";
+                    pesanUmumApp('success', 'Sukses', "Proses training & validasi selesai ...");
+                    document.querySelector("#capTitleTraining").innerHTML = "Training & validasi data selesai ...";
                     document.querySelector("#imgLoading").setAttribute("src", "http://127.0.0.1:5000/static/happy.png");
                 }else{
                     $.post('{{ BASE_URL }}/training-proses',{'detik':intStatus}, function(data){
