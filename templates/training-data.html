@@ -1,0 +1,47 @@
+{% extends "layout/base.html" %} {% block contents %}
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <div style="text-align: center;">
+        <img src="{{ url_for('static', filename='training.png') }}" alt="" width="200">
+      </div>
+      
+      <h1 class="header center orange-text" id="capTitleTraining">Training Data</h1>
+      <div class="row center" id="">
+        <h5 class="header col s12 light">Proses akan memakan waktu & resource CPU yang signifikan, untuk itu diharapkan tidak ada aplikasi/proses lain 
+            yang mengganggu step training data
+        </h5>
+      </div>
+      <div class="row center">
+        <a href="javascript:void(0)" id="download-button" id="btnTraining" onclick="prosesTraining()" class="btn-large waves-effect waves-light orange">Mulai training</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+    <div class="container">
+
+    </div>
+
+
+    <script>
+        function prosesTraining()
+        {
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Mulai proses training data latih?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+            }).then((result) => {
+              document.querySelector("#capTitleTraining").innerHTML = "Melakukan training data ...";
+              $("#btnTraining").hide();
+            });
+        }
+    </script>
+
+{% endblock contents %}

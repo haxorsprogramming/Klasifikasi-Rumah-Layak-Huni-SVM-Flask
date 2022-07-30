@@ -83,5 +83,10 @@ def normalisasi_data():
         dKeluarga.append(kSatuan)
 
     return render_template('data-normalisasi.html', dKeluarga=dKeluarga)
+
+@app.route('/training-data')
+def training_data():
+    return render_template('training-data.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

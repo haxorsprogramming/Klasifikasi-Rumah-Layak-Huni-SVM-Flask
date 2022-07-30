@@ -61,12 +61,59 @@
         <img src="{{ url_for('static', filename='normalisasi_table.png') }}">
         <br/>
         <br/>
-        <a href="javascript:void(0)" id="download-button" class="btn-large waves-effect waves-light orange">Mulai Normalisasi Data</a>
+        <a href="javascript:void(0)" id="btnNormalisasi" onclick="prosesNormalisasi()" id="download-button" class="btn-large waves-effect waves-light orange">Mulai Normalisasi Data</a>
+        <div style="display: none;" id="divLoading">
+            <img src="{{ url_for('static', filename='loading.svg') }}"><br/>
+            <span id="txtStatus" style="font-weight: bold;">Memulai proses normalisasi ...</span>
+        </div>
     </div>
   </div>
 </div>
 <script>
+
+    var statusTraining = 0;
+
   $("#tblDataKeluarga").dataTable();
+
+  function prosesNormalisasi()
+  {
+    $("#btnNormalisasi").hide();
+    $("#divLoading").show();
+
+    setInterval(function(){
+        if(statusTraining === 15){
+            pesanUmumApp('success', 'Sukses', 'Proses normalisasi data selesai ... (file normalisasi.json), Akan masuk ke halaman data normalisasi dalam 5 detik ..');
+            $("#divLoading").hide();
+            setTimeout(function(){
+                window.location.assign('http://127.0.0.1:5000/normalisasi-data');
+            }, 5000);
+            
+        }else if(statusTraining === 3){
+            document.querySelector("#txtStatus").innerHTML = "<pre>Membaca file data training (excel) ...</pre>";
+        }else if(statusTraining === 5){
+            document.querySelector("#txtStatus").innerHTML = "<pre>Ekstraksi data ...</pre>";
+        }else if(statusTraining === 6){
+            document.querySelector("#txtStatus").innerHTML = "<pre>Konversi data (<i>x-min</i> / <i>max - min</i>) ...</pre>";
+        }else if(statusTraining === 9){
+            document.querySelector("#txtStatus").innerHTML = "<pre>Finalisasi normalisasi ...</pre>";
+        }else if(statusTraining === 10){
+
+        }
+        statusTraining++;
+    }, 2000);
+
+  }
+
+  function pesanUmumApp(icon, title, text)
+        {
+        Swal.fire({
+            icon : icon,
+            title : title,
+            text : text
+        });
+        }
+
+
 </script>
 
 {% endblock contents %}
