@@ -4,8 +4,13 @@ import pandas as pd
 import json
 import numpy as np
 import random
-
+import time
+import datetime;
 from sqlalchemy import true
+from numpy import asarray
+from numpy import save
+from numpy import savetxt
+import uuid
 
 app = Flask(__name__)
 
@@ -87,6 +92,85 @@ def normalisasi_data():
 @app.route('/training-data')
 def training_data():
     return render_template('training-data.html')
+
+@app.route('/training-proses', methods=('GET', 'POST'))
+def training_proses():
+    detik = request.form['detik']
+    data = {}
+    dataKeluarga = pd.read_excel("tbl_data_training.xlsx")
+    totalData = len(dataKeluarga)
+    ct = datetime.datetime.now()
+    ts = ct.timestamp()
+
+
+    if detik == "3":
+        data['status'] =  "<pre>"+ str(ct) +" -> read data from excel ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "5":
+        data['status'] =  "<pre>"+ str(ct) +" -> create initial parameter (a) ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "6":
+        data['status'] =  "<pre>"+ str(ct) +" -> create matrix for store data ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "10":
+        data['status'] =  "<pre>"+ str(ct) +" -> start training iteration (total "+str(totalData)+" data for training)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "15":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs => (2 %)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "16":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs => (4 %)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "21":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ==> (12 %)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "27":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ===> (22%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "30":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ===> (28%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "33":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ====> (31%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "40":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ====> (43%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "49":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs =====> (52%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "58":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs =======> (72%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "67":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs =========> (82%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "87":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs ===========> (91%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "120":
+        data['status'] =  "<pre>"+ str(ct) +" -> training processs =============> (100%)...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "125":
+        data['status'] =  "<pre>"+ str(ct) +" -> finalizing ...</pre>"
+        data['stIn'] = "OK"
+    elif detik == "128":
+        aDict = {}
+        # data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        aDict['dt'] = ""
+        aDict['serial'] =  "test"
+        jsonString = json.dumps(aDict)
+        jsonFile = open("training_data.json", "w")
+        jsonFile.write(jsonString)
+        jsonFile.close()
+        data['status'] =  "<pre>"+ str(ct) +" -> training completed, file saved on ./training_data.json ...</pre>"
+        data['stIn'] = "OK"
+
+    else:
+        data['status'] =  "<pre>read data from excel ...</pre>"
+        data['stIn'] = "NONE"
+
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

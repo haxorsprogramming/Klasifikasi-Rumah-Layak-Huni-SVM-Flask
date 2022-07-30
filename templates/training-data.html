@@ -8,13 +8,23 @@
       </div>
       
       <h1 class="header center orange-text" id="capTitleTraining">Training Data</h1>
-      <div class="row center" id="">
+      <div class="row center" id="divAwal">
         <h5 class="header col s12 light">Proses akan memakan waktu & resource CPU yang signifikan, untuk itu diharapkan tidak ada aplikasi/proses lain 
             yang mengganggu step training data
         </h5>
       </div>
+      <br/>
+      <div style="display: none;text-align: center;" id="divLoading">
+        <img src="{{ url_for('static', filename='loading.svg') }}" id="imgLoading"><br/>
+        </div>
+      <div id="divLog" style="display:none;">
+        <code>Log from process</code>
+        <div id="capLog"> 
+
+        </div>
+      </div>
       <div class="row center">
-        <a href="javascript:void(0)" id="download-button" id="btnTraining" onclick="prosesTraining()" class="btn-large waves-effect waves-light orange">Mulai training</a>
+        <a href="javascript:void(0)" id="btnTraining" onclick="prosesTraining()" class="btn-large waves-effect waves-light orange">Mulai training</a>
       </div>
       <br><br>
 
@@ -26,6 +36,10 @@
 
 
     <script>
+
+        var intStatus = 0;
+        var capStatus = "";
+
         function prosesTraining()
         {
             Swal.fire({
@@ -38,9 +52,41 @@
                 confirmButtonText: "Yes",
                 cancelButtonText: "No",
             }).then((result) => {
+                $("#divLoading").show();
               document.querySelector("#capTitleTraining").innerHTML = "Melakukan training data ...";
               $("#btnTraining").hide();
+              $("#divAwal").hide();
+              $("#divLog").show();
+
+              setInterval(function(){
+                if(intStatus === 130){
+                    $("#divLoading").hide();
+                    pesanUmumApp('success', 'Sukses', "Proses training selesai ...");
+                    document.querySelector("#capTitleTraining").innerHTML = "Training data selesai ...";
+                    document.querySelector("#imgLoading").setAttribute("src", "http://127.0.0.1:5000/static/happy.png");
+                }else{
+                    $.post('{{ BASE_URL }}/training-proses',{'detik':intStatus}, function(data){
+                        let stIn = data.stIn;
+                        if(stIn === 'OK'){
+                            capStatus += data.status;
+                            document.querySelector("#capLog").innerHTML = capStatus;
+                        }
+                    });
+                }
+                intStatus++;
+              }, 200);
+
+             
             });
+        }
+
+        function pesanUmumApp(icon, title, text)
+        {
+        Swal.fire({
+            icon : icon,
+            title : title,
+            text : text
+        });
         }
     </script>
 
