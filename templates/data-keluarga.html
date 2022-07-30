@@ -1,0 +1,72 @@
+{% extends "layout/base.html" %} {% block contents %}
+<div class="section no-pad-bot" id="index-banner">
+  <div>
+    <div style="margin-left: 30px;" style="text-align:center;">
+      <h5>Data Keluarga</h5>
+    </div>
+    <div class="row">
+      <table id="tblDataKeluarga" style="font-size: 10px;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>(1) Nama</th>
+            <th>(2) Alamat</th>
+            <th>(3) Pekerjaan</th>
+            <th>(4) Penghasilan</th>
+            <th>(5) Pendidikan</th>
+            <th>(6) Luas Bangunan</th>
+            <th>(7) Luas Lantai</th>
+            <th>(8) Jenis Lantai</th>
+            <th>(9) Jenis Dinding</th>
+            <th>(10) Jenis Atap </th>
+            <th>(11) Jumlah Kamar</th>
+            <th>(12) Sumber Air Minum</th>
+            <th>(13) Cara Memperoleh Air Minum</th>
+            <th>(14) Sumber Penerangan</th>
+            <th>(15) Sumber Energi Memasak</th>
+            <th>(16) Status Sanitasi</th>
+            <th>(17) Tempat pembuangan tinja</th>
+            <th>(18) Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for kel in dKeluarga %}
+            <tr>
+                <td>{{ kel.ord }}</td>
+                <td>{{ kel.nama }}</td>
+                <td>{{ kel.alamat }}</td>
+                <td>{{ kel.pekerjaan }}</td>
+                <td>{{ kel.penghasilan }}</td>
+                <td>{{ kel.pendidikan }}</td>
+                <td>{{ kel.luas_bangunan }}</td>
+                <td>{{ kel.luas_lantai }}</td>
+                <td>{{ kel.jenis_lantai }}</td>
+                <td>{{ kel.jenis_dinding }}</td>
+                <td>{{ kel.jenis_atap }}</td>
+                <td>{{ kel.jumlah_kamar }}</td>
+                <td>{{ kel.sumber_air_minum }}</td>
+                <td>{{ kel.peroleh_air_minum }}</td>
+                <td>{{ kel.sumber_penerangan }}</td>
+                <td>{{ kel.sumber_memasak }}</td>
+                <td>{{ kel.status_sanitasi }}</td>
+                <td>{{ kel.pembuangan_tinja }}</td>
+                <td>{{ kel.status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align: center;margin-top:50px;">
+        <h4>Tabel normalisasi data</h4>
+        <img src="{{ url_for('static', filename='normalisasi_table.png') }}">
+        <br/>
+        <br/>
+        <a href="javascript:void(0)" id="download-button" class="btn-large waves-effect waves-light orange">Mulai Normalisasi Data</a>
+    </div>
+  </div>
+</div>
+<script>
+  $("#tblDataKeluarga").dataTable();
+</script>
+
+{% endblock contents %}

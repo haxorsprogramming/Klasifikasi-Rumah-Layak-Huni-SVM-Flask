@@ -7,18 +7,22 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
         <img src="https://s3.jagoanstorage.com/aditia-storage/asset/logo/uinsu.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Data Keluarga</a></li>
-        <li><a href="#">Normalisasi Data</a></li>
-        <li><a href="#">Prediksi SVM</a></li>
+        <li><a href="{{ BASE_URL }}/">Home</a></li>
+        <li><a href="{{ BASE_URL }}data-keluarga">Data Keluarga</a></li>
+        <li><a href="{{ BASE_URL }}normalisasi-data" style="display: none;">Normalisasi Data</a></li>
+        <li><a href="{{ BASE_URL }}training-data">Training Data</a></li>
+        <li><a href="{{ BASE_URL }}history-pengujian">Prediksi SVM</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -45,7 +49,7 @@
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  
   <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
   <script src="{{ url_for('static', filename='js/init.js') }}"></script>
 
